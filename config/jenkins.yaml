@@ -1,10 +1,64 @@
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - basicSSHUserPrivateKey:
+          description: "SSH Key for use by jenkins to connect to build agents."
+          id: "jenkins-ssh-agents-key"
+          privateKeySource:
+            directEntry:
+              privateKey: "{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}"
+          scope: GLOBAL
+          username: "jenkins"
+      - gitLabApiTokenImpl:
+          apiToken: "{AQAAABAAAAAgxTH+ocqGOt9W02rDl1dtT59iSLzycqFtoIwLyVtAqYWbTNp07Z+NYh8crtsmHxre}"
+          description: "API Token for gitlab "
+          id: "jenkins-gitlab-api-token"
+          scope: GLOBAL
+
 jenkins:
-  systemMessage: "Jenkins Configured using Code"
+  systemMessage: "Jenkins Configured using Code V2"
 
   numExecutors: 1
-  mode: NORMAL
+
+  #Configure the master, possible  EXCLUSIVE, or NORMAL
+  mode: EXCLUSIVE  
   scmCheckoutRetryCount: 3
   labelString: "master-label"  
+
+  #agents
+  agentProtocols:
+    - "JNLP4-connect"
+    - "Ping"
+
+  #Nodes configuration
+  nodes:
+    - permanent:
+        labelString: "agent1"
+        launcher:
+          ssh:
+            credentialsId: "jenkins-ssh-agents-key"
+            host: "192.168.2.208"
+            port: 22
+            sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
+        name: "agent-1"
+        nodeDescription: "Centos 7 Agent. Also a docker server. "
+        remoteFS: "/home/jenkins"
+        retentionStrategy: "always"
+  
+  #gitlab connection 
+  gitLabConnectionConfig:
+    connections:
+    - apiTokenId: "jenkins-gitlab-api-token"
+      clientBuilderId: "autodetect"
+      connectionTimeout: 10
+      ignoreCertificateErrors: false
+      name: "gitlab"
+      readTimeout: 10
+      url: "https://gitlab.lnxsystems.com"
+
+
+
 
   securityRealm:
     local:
