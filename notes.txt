@@ -1,0 +1,8 @@
+jenkins:
+    # you configure the general information about Jenkins, like nodes or the security-related stuff
+tools:
+    # here goes everything from the Global Tools Configuration page, like Git, Maven, Gradle, Docker, etc.
+unclassified:
+    # we configure most of the plugin-specific settings under this element
+plugins:
+    # over here we can define what plugins JCasC will automatically install; note: it is a Beta feature for now
