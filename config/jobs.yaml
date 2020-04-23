@@ -1,19 +1,42 @@
 jobs:
-  - script: >
-      pipelineJob('maven-pipeline-version-controlled') {
-          definition {
-              triggers {
-                  cron('H/5 * * * *')
-              }
-              cpsScm {
-                  scm {
-                    git {
-                        remote { url 'https://github.com/tsundberg/maven-build-with-jenkins-pipeline.git' }
-                        branch '*/master'
-                        extensions {}
-                    }
+    - script: >
+          pipelineJob('maven-pipeline-version-controlled') {
+            definition {
+                  triggers {
+                      cron('H/5 * * * *')
                   }
-                  scriptPath 'src/ci/Jenkinsfile'
+                  cpsScm {
+                      scm {
+                        git {
+                            remote { url 'https://github.com/tsundberg/maven-build-with-jenkins-pipeline.git' }
+                            branch '*/master'
+                            extensions {}
+                        }
+                      }
+                      scriptPath 'src/ci/Jenkinsfile'
+                  }
               }
           }
-      }
+
+    - script: >
+          pipelineJob('sample-java-maven-app') {
+            definition {
+                triggers {
+                        cron('H/5 * * * *')
+                    }
+                    cpsScm {
+                        scm {
+                            git {
+                                remote { 
+                                    url 'git@gitlab.lnxsystems.com:jnvilo/simple-java-maven-app.git' 
+                                    credentials 'jnvilo-gitlab-user-key'
+                                    }
+                                branch '*/master'
+                                
+                                extensions {}
+                            }
+                        }
+                        scriptPath 'Jenkinsfile'
+                    }
+                }
+            }

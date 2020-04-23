@@ -85,13 +85,60 @@ credentials:
               scope: "GLOBAL"
               id: "github-ci-user"
               description: "Github CI User Credentials"
-              username: "gitlab"
-              password: "gitlab"
+              username: "jnvilo"
+              password: "M4h1rapF0rj3t"
+
+          - basicSSHUserPrivateKey:
+              description: "SSH Key for use by jenkins "
+              id: "jnvilo-gitlab-user-key"
+              scope: GLOBAL
+              username: "jnvilo"
+              privateKeySource:
+                directEntry:
+                  privateKey: |
+                    -----BEGIN OPENSSH PRIVATE KEY-----
+                    b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+                    NhAAAAAwEAAQAAAYEAxCudg5WbKi95Rm7DOY1u20TNuA2w/ojB4ZotiI4YkWwCrdypUrAE
+                    fuGm+S4Nj/8qwC1yf+1rv+GVdLNj2pWv8EIqjDEgv7eNsMHpekaXOLmd8fyC2RlHO7cnVn
+                    pDoB2umdFV6C/zkRsNN+ahIaxJCEQwcohSP0lmoLdJGx5cwkyWBqQJ3wxhpgOSkKwletlW
+                    4bzZERVPCQHanjQizjOZ8CIgFouOy58OK81zlOUxdO+Rb+jjaqY/6BEb1PG4HwcjtB9LbR
+                    KUw38GFt+qXYBo1awXdju9bQMJwxoM/TATFwXfRZcc/4a2hkTUg89jezLafD+TdnkkM5uT
+                    ly2p130gxDYm7x20U9sYrLC0xzEXKSBxeHV+WsR5QcRNKLhhTtGAJmFHgxAKCW46gOEesH
+                    loL5S0/COJnwfjLjwUPPBUWcvE23FfpThPxssS3M2KLRqmt/yWVIm+IKPNMq6eFZ4Qmm2A
+                    pERtz52cIUnDBYNI/FWtPRgWzxvqFY1yVvgoC/qbAAAFmHZKhkR2SoZEAAAAB3NzaC1yc2
+                    EAAAGBAMQrnYOVmyoveUZuwzmNbttEzbgNsP6IweGaLYiOGJFsAq3cqVKwBH7hpvkuDY//
+                    KsAtcn/ta7/hlXSzY9qVr/BCKowxIL+3jbDB6XpGlzi5nfH8gtkZRzu3J1Z6Q6AdrpnRVe
+                    gv85EbDTfmoSGsSQhEMHKIUj9JZqC3SRseXMJMlgakCd8MYaYDkpCsJXrZVuG82REVTwkB
+                    2p40Is4zmfAiIBaLjsufDivNc5TlMXTvkW/o42qmP+gRG9TxuB8HI7QfS20SlMN/Bhbfql
+                    2AaNWsF3Y7vW0DCcMaDP0wExcF30WXHP+GtoZE1IPPY3sy2nw/k3Z5JDObk5ctqdd9IMQ2
+                    Ju8dtFPbGKywtMcxFykgcXh1flrEeUHETSi4YU7RgCZhR4MQCgluOoDhHrB5aC+UtPwjiZ
+                    8H4y48FDzwVFnLxNtxX6U4T8bLEtzNii0aprf8llSJviCjzTKunhWeEJptgKREbc+dnCFJ
+                    wwWDSPxVrT0YFs8b6hWNclb4KAv6mwAAAAMBAAEAAAGAYzJ68DMSx35CIS+ZYNz4FcDxFg
+                    U2Xz/gaqiAJfFU0xR/NlPC+6EuZMrOmGqFSS+K+qsAn1f7iIgV/3FHKR1QXnnW8hVVrhyv
+                    dZZY7hAMIA8co2VA9W8m6jdvmPcygyD/TaDhhAvbaqD3SjFBgbmRJLD2nrP4gzAmyVZljW
+                    UJGueHZcxFgZjNOBnOX4HtYfXNTVElotHXqYJafm12vDazvQ5Ek6H2j1ja3aOCsuRC4hLS
+                    xHhLp35yCnO8Uy34IRiGPXfl4BNKyATlflMn+XHwSNYm+yUFayFM6t1EaDRdo7yRwAhf9k
+                    y5ZU86uCr/ea8a+895fgcRXILODLtvaN04bz4Ctzgi7/qf7Qrq1hg1xjDJiYyOs1oJRpkk
+                    73X5ASQexMy2xeoWeoaaMWWc55JSkPCcoIIqRnU3cWWbJNBSRXIqkBtklE4Y5wqxuf4hRl
+                    m4ee7VBpm2Kv6aNx9M5EAQ7d+pQY0XvKBnPmK4DVfV5KHA+mYA0AfyAnikSFvOYSNhAAAA
+                    wQDyOOceh01g5cXS9AWZxdM5s/8ok0qaVqxNJjCmm16NVfNM/6oSUg+Q6aHmhOliuEhtVt
+                    MOcsaOzs1Uc2I3l+FygcWrKUxrOoxAXgmTb1PY4z4JRcBEHzkSYGhCintpyHsYuJk1M/bO
+                    z60plQHVSBH1AZ33HhBNbPCvB30HcU+7uEJDTf9kQIQxUxR/8IbqWrNxjY3Nd1J0KM0bLu
+                    tze4rw6qDh0yrkhoYIAxNYSUi3rueSfR5CFJjks58N+8yU5gcAAADBAPmCbV/hlwti0JjU
+                    0iV3C+SFS8ca02jDDKJFmHRlGEmmIU8QiG6yhBmUIDME1OjXDmSXDMsE7IjWDmCVRlPDCX
+                    +sQK5jY8/DvplHiBre5aiSDZj1Y70z7E/Qawa6+vQSzCOnbHqDW+/AVc448hn3GXV9lM9c
+                    X17kuytOzOxmDfCt7OV3xSn872ZuAxeJUb7OA0ihqz1wcWwdeh3Jryv6XC/ogCs6wj3ZF6
+                    D90vWGdFBkQWjvM1eNKhM27U9/x3t/vwAAAMEAyUX73pYaJtr/+x4L0OFV0FFYY5xiDxMX
+                    g9BpvTkPMecpbQH96VGmb3di1smxyqMTmgDLiFE2nqhkveQ23OWt/ZM/K9lKLkWjvfvC5b
+                    VRrjyCYigxmu65/cS0LlO6h+FHs6itzrr+tizqGvF68G6D+NJ0nSMJrY4tLqwL0J8bsbny
+                    RPgdb0DWF/hDLnq7eID9oelfKuJS8P0PlZvTWqFoupsSE3QzY5pnKACeFhtFunAAuxu7SE
+                    alepuuhOOzLnwlAAAAIWphc29udmlsb3JpYUBqdi5vcHRpc2Nhbmdyb3VwLmNvbQE=
+                    -----END OPENSSH PRIVATE KEY-----
 
           - basicSSHUserPrivateKey:
               description: "SSH Key for use by jenkins "
               id: "jenkins_rsa"
-              scope: SYSTEM
+              scope: GLOBAL
               username: "jenkins"
               privateKeySource:
                 directEntry:
