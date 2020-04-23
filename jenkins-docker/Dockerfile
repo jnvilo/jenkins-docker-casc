@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.230
+FROM jenkins/jenkins:2.233
 
 LABEL maintainer="jnvilo@gmail.com"
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
