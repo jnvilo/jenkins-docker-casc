@@ -4,14 +4,14 @@ jenkins:
   numExecutors: 1
   mode: NORMAL
   scmCheckoutRetryCount: 3
-  labelString: "master-label"  
+  labelString: "master-label"
 
   securityRealm:
     local:
       allowsSignup: false
       users:
-       - id: admin
-         password: ${adminpw:-passw0rd}
+        - id: admin
+          password: ${adminpw:-passw0rd}
 
   authorizationStrategy:
     globalMatrix:
@@ -24,7 +24,21 @@ jenkins:
   crumbIssuer: "standard"
 
   remotingSecurity:
-    enabled: true    
+    enabled: true
+
+  nodes:
+    - permanent:
+        labelString: "agent-1"
+        launcher:
+          ssh:
+            credentialsId: "jenkins_rsa"
+            host: "agent-1.prod.lnxsystems.com"
+            port: 22
+            sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
+        name: "agent-1"
+        nodeDescription: "agent-1"
+        remoteFS: "/home/jenkins"
+        retentionStrategy: "always"
 
 unclassified:
   location:
@@ -59,3 +73,64 @@ tool:
               installers:
                 - maven:
                     id: "3.5.4"
+
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          #######
+          # User Auth
+          #######
+          - usernamePassword:
+              scope: "GLOBAL"
+              id: "github-ci-user"
+              description: "Github CI User Credentials"
+              username: "gitlab"
+              password: "gitlab"
+
+          - basicSSHUserPrivateKey:
+              description: "SSH Key for use by jenkins "
+              id: "jenkins_rsa"
+              scope: SYSTEM
+              username: "jenkins"
+              privateKeySource:
+                directEntry:
+                  privateKey: |
+                    -----BEGIN OPENSSH PRIVATE KEY-----
+                    b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+                    NhAAAAAwEAAQAAAYEA3Zr0UzFrMKg3oxuVaypsNb3vcKwXM47NM8dQ0vWWPBWETNct1Fa8
+                    Zh+L1NuaXwFq6rS0W7TqQtUQ4CaJ66fqCfrTQYYoJcGbGpeDPgdh1D5PCgkH43f+mbn1fu
+                    8b06gWJX+Dm65Ae+0Ia8f4fLCvkkM3AKQXUJt2FkDw7HpsmoHjUMlf7le7wyUJQcuhBPnI
+                    LZIfSoEiviEN+Uy+545J0CJFFGkE7xhPEM9YUseGYX8iqJkvy6w4EZim1gAzkLtkmq3cOP
+                    5W9E7mnDuqA0vqc7rnqYbeeC/gzAsod6+ro5RlDRMWz6tTnZEfPN0ToHe6ZTSZAv0GhLNQ
+                    q9hYZQPJD7z6yMqb82jslM7gJCDTbFpncMGKrE2wag5d7vnklyIpCfIUJgMT2kRtDZxfK3
+                    CLH0FLNo5ECSF9kANMS7/u67vTJKgu7Fkjrtn39X8xo6+fhjskpEr/JuhtCP03DOFrtrKi
+                    1oHb2LFiozqt24yo/fxKL4Ky03+pVYW4P7o7bvX1AAAFmFA7SPNQO0jzAAAAB3NzaC1yc2
+                    EAAAGBAN2a9FMxazCoN6MblWsqbDW973CsFzOOzTPHUNL1ljwVhEzXLdRWvGYfi9Tbml8B
+                    auq0tFu06kLVEOAmieun6gn600GGKCXBmxqXgz4HYdQ+TwoJB+N3/pm59X7vG9OoFiV/g5
+                    uuQHvtCGvH+Hywr5JDNwCkF1CbdhZA8Ox6bJqB41DJX+5Xu8MlCUHLoQT5yC2SH0qBIr4h
+                    DflMvueOSdAiRRRpBO8YTxDPWFLHhmF/IqiZL8usOBGYptYAM5C7ZJqt3Dj+VvRO5pw7qg
+                    NL6nO656mG3ngv4MwLKHevq6OUZQ0TFs+rU52RHzzdE6B3umU0mQL9BoSzUKvYWGUDyQ+8
+                    +sjKm/No7JTO4CQg02xaZ3DBiqxNsGoOXe755JciKQnyFCYDE9pEbQ2cXytwix9BSzaORA
+                    khfZADTEu/7uu70ySoLuxZI67Z9/V/MaOvn4Y7JKRK/ybobQj9Nwzha7ayotaB29ixYqM6
+                    rduMqP38Si+CstN/qVWFuD+6O2719QAAAAMBAAEAAAGAH0VedN7kYVlbgIjD7PtviaXjw+
+                    KE46GjE0ts/Ffre08N/EnhDbWvoDmTYdYbUozAqZ4WVVqSNBwc5YSKsdZgEEh0xypHQAyx
+                    9m6q9nXUOD8SqDfeBRtJsiernN3g710owuHbkHxmXRZ1ub/eMLo+DEWv3UdKgvVtFHbViI
+                    k+Cg+KJDxGbTu0IzV2uPIjJrCYrtWP1NOkM3A2qJdL2SEbCWPMm7S2HYcwoQ6hSA0fyWJH
+                    YcM8G2GSB+mioVAl9qZ6qHYlYYQ7jkfuFMQ16ULRtRTrtE8j1Fs+IZzgA5CWBKh+mc5idA
+                    8FRUYtDIId7yAUXuV0auzXgD3WkE8DJAriCS06B/fqZ/n0oFvvKuAJSWgeJc39M/swXgSL
+                    yX9peCL3chWy6j9DZyd9CbYcJqoMU8v2iOPG9f2W29wCURd17Xo4niHcUavfmhGGU1AUsC
+                    8ncYWRRFnUexPc2vsLDlsvoc0kB9WmHxB8rqhXSq7WbgK6GryMtPFXXe/yWuaFXBABAAAA
+                    wDt6VLpIzon44dtXzJ3kk/NeSiz6eeTuAMKwv25o5lwQBD5nr8BWabmRtIF2d3prXSssfb
+                    FB4Q/E7ctlt+ejOpcBBWhqRcDOkWbrk1sKn7nqUlXX4g36NQANk6B2PjlkIKBwC95rW5T/
+                    Oa34jZf6QFJkqrhLh3eIDY/oltUvLELp0pyAkozjI5/sh/PIzsfsDsnBBWdq2vHOutjpWs
+                    hphCaJgI+9ua4f1FC73ZKtmmafdvKUvHLa3iznKpKVX4b/UAAAAMEA/3nFk3Ud3U3/8l7c
+                    uKkwBtV/i/cLT0Lmm5BN4kFZh59wwdmMySERpHHfXviL5RP/aSf/IlmmomQj3QZFcU5hvC
+                    JcREde7lgmHedunw28or79Gc/Qk0C1gpm6rP7o6T/ENnu0+J7KZH2cde5GLn+XDq5eXvIO
+                    lq7QeJp5XDyDIMhojewNyEFBtQOgoirCJ9vn14HmgP2acNSTgmTOT5ML36xfkTvRTS0/OS
+                    L5lDTjAX7xP1AGD8DAVjaYsRnbKPPVAAAAwQDeD2MOroIZkIDi7xvBiS3OJu9jrwvBT601
+                    7tmvi7ru0lE9k/7in7OuZZt5YEFGhGih3gEQb+4jRMy/m4BD7e1qNm77mcLH0tzEZa9Wl2
+                    cil6m7l0puTKNljEiEGzuxFVb0wmnO/gpjwkULMQkh+UkplxF4GY4zbeQxdilh9JxgNMw9
+                    a6yPDMZZ6rQztMSDsWcOCAC+Ay7702id2crN9rwMQzjyLp+sjR08xu43OoLAcZtxyQ6bDW
+                    ghp0Dq8r/eqaEAAAAhamFzb252aWxvcmlhQGp2Lm9wdGlzY2FuZ3JvdXAuY29tAQI=
+                    -----END OPENSSH PRIVATE KEY-----
